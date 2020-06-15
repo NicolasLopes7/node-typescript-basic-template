@@ -11,6 +11,7 @@ const concatenateAnArrayOfStrings = (stringArray: string[]) => {
     idx === 0 ? currVal : `${prevVal}${currVal}`
   );
 };
+
 const populateParams = (data: ParamInterface[]) => {
   return concatenateAnArrayOfStrings(
     data.map((param, index) =>
@@ -25,7 +26,7 @@ const populateParams = (data: ParamInterface[]) => {
 
 export const generateReadme = () => {
   const title = `${configDoc.projectName} | V${configDoc.version}`;
-  const subTitle = `By ${configDoc.author} on ${configDoc.BaseUrl}`;
+  const subTitle = `By ${configDoc.author} on ${configDoc.BaseUrl}\n`;
   const endPoints = `${concatenateAnArrayOfStrings(
     endpoints.endPoints.map(
       (endPoint) =>
@@ -59,7 +60,7 @@ export const generateReadme = () => {
       }
       ${
         endPoint.response.length > 0
-          ? `\nResponse: \n{\n${populateParams(endPoint.response)}}\n\n`
+          ? `\nResponse: \n{\n${populateParams(endPoint.response)}}\n----\n`
           : ''
       }`
     )
