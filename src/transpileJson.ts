@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import configDoc from './config.json';
-import endpoints from './generated.json';
+import configDoc from './samples/config.json';
+import endpoints from './samples/generated.json';
 
 interface ParamInterface {
   name: string;

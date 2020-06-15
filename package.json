@@ -6,7 +6,7 @@
   "author": "Nicolas Lopes Aquino <nicolaslopesbusiness@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register src/samples/test.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register src/transpileJson.ts"
   },
   "dependencies": {
     "lodash.template": "^4.5.0"
