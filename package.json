@@ -6,7 +6,7 @@
   "author": "Nicolas Lopes Aquino <nicolaslopesbusiness@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register src/tools/utils/readLinesFromFile.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register src/tools/findRoutes.ts"
   },
   "dependencies": {
     "express": "^4.17.1",

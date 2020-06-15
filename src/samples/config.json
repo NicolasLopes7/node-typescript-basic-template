@@ -2,8 +2,5 @@
   "projectName": "API doc generator",
   "version": "0.0.1B",
   "author": "Nicolas Lopes Aquino <nicolaslopesbusiness@gmail.com>",
-  "baseDir": "./",
-  "paths": { "~/*": ["src/routes/*"] },
-  "exclude": ["dist", "node_modules"],
   "BaseUrl": "https://api-buxoxei-test.herokuapp.com"
 }
