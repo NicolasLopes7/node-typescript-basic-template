@@ -17,16 +17,16 @@ const populateParams = (data: ParamInterface[]) => {
     data.map((param, index) =>
       data.length > 1
         ? index === data.length
-          ? `${param.name} (${param.type}),`
-          : `${param.name} (${param.type}), \n`
-        : `${param.name} (${param.type})`
+          ? `${param.name} (**${param.type}**),`
+          : `${param.name} (**${param.type}**), \n`
+        : `${param.name} (**${param.type}**)`
     )
   );
 };
 
 export const generateReadme = () => {
-  const title = `${configDoc.projectName} | V${configDoc.version}`;
-  const subTitle = `By ${configDoc.author} on ${configDoc.BaseUrl}\n`;
+  const title = `#${configDoc.projectName} | V${configDoc.version}`;
+  const subTitle = `####By ${configDoc.author} on ${configDoc.BaseUrl}\n---\n`;
   const endPoints = `${concatenateAnArrayOfStrings(
     endpoints.endPoints.map(
       (endPoint) =>
