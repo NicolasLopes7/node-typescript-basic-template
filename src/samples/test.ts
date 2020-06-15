@@ -6,40 +6,50 @@ interface ParamInterface {
   name: string;
   type: string;
 }
+const concatenateAnArrayOfStrings = (stringArray: string[]) => {
+  return stringArray.reduce((prevVal, currVal, idx) =>
+    idx === 0 ? currVal : `${prevVal}${currVal}`
+  );
+};
 const populateParams = (data: ParamInterface[]) => {
-  return data
-    .map((param, index) =>
+  return concatenateAnArrayOfStrings(
+    data.map((param, index) =>
       data.length > 1
         ? index === data.length
           ? `${param.name} (${param.type}),`
           : `${param.name} (${param.type}), \n`
         : `${param.name} (${param.type})`
     )
-    .reduce((prevVal, currVal, idx) =>
-      idx === 0 ? currVal : `${prevVal}${currVal}`
-    );
+  );
 };
 
 export const generateReadme = () => {
   const title = `${configDoc.projectName} | V${configDoc.version}`;
   const subTitle = `By ${configDoc.author} on ${configDoc.BaseUrl}`;
-  const endPoints = `${endpoints.endPoints.map(
-    (endPoint) =>
-      `${endPoint.method} ${endPoint.name} (${endPoint.version}): ${
-        endPoint.endPoint
-      }\n${
-        endPoint.body.length > 0
-          ? `Body: \n{\n${populateParams(endPoint.body)}}`
-          : ''
-      }
+  const endPoints = `${concatenateAnArrayOfStrings(
+    endpoints.endPoints.map(
+      (endPoint) =>
+        `${endPoint.method} ${endPoint.name} (${endPoint.version}): ${
+          endPoint.endPoint
+        }\n${
+          endPoint.body.length > 0
+            ? endPoint.body.length > 1
+              ? `Body: \n{\n${populateParams(endPoint.body)}}`
+              : `Body: \n{\n${populateParams(endPoint.body)}\n}`
+            : ''
+        }
       ${
         endPoint.params.length > 0
-          ? `\nURL Params: \n{\n${populateParams(endPoint.params)}}`
+          ? endPoint.params.length > 1
+            ? `\nURL Params: \n{\n${populateParams(endPoint.params)}}`
+            : `\nURL Params: \n{\n${populateParams(endPoint.params)}\n}`
           : ''
       }
       ${
         endPoint.queryParams.length > 0
-          ? `\nQuery Params: \n{\n${populateParams(endPoint.queryParams)}}`
+          ? endPoint.queryParams.length > 1
+            ? `\nQuery Params: \n{\n${populateParams(endPoint.queryParams)}}`
+            : `\nQuery Params: \n{\n${populateParams(endPoint.queryParams)}\n}`
           : ''
       }
       ${
@@ -49,9 +59,10 @@ export const generateReadme = () => {
       }
       ${
         endPoint.response.length > 0
-          ? `\nResponse: \n{\n${populateParams(endPoint.response)}}`
+          ? `\nResponse: \n{\n${populateParams(endPoint.response)}}\n\n`
           : ''
       }`
+    )
   )}`;
   const text = `${title}\n${subTitle}\n${endPoints}`;
   return text;
