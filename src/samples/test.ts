@@ -6,7 +6,7 @@ interface ParamInterface {
   name: string;
   type: string;
 }
-const populateEndPoints = (data: ParamInterface[]) => {
+const populateParams = (data: ParamInterface[]) => {
   return data
     .map((param, index) =>
       data.length > 1
@@ -29,22 +29,27 @@ export const generateReadme = () => {
         endPoint.endPoint
       }\n${
         endPoint.body.length > 0
-          ? `Body: \n{\n${populateEndPoints(endPoint.body)}}`
+          ? `Body: \n{\n${populateParams(endPoint.body)}}`
           : ''
       }
       ${
         endPoint.params.length > 0
-          ? `\nURL Params: ${populateEndPoints(endPoint.params)}`
+          ? `\nURL Params: \n{\n${populateParams(endPoint.params)}}`
           : ''
       }
       ${
         endPoint.queryParams.length > 0
-          ? `\nQuery Params: ${populateEndPoints(endPoint.queryParams)}`
+          ? `\nQuery Params: \n{\n${populateParams(endPoint.queryParams)}}`
           : ''
       }
       ${
         endPoint.headers.length > 0
-          ? `\nHeaders: ${populateEndPoints(endPoint.headers)}`
+          ? `\nHeaders: \n{\n${populateParams(endPoint.headers)}}\n`
+          : ''
+      }
+      ${
+        endPoint.response.length > 0
+          ? `\nResponse: \n{\n${populateParams(endPoint.response)}}`
           : ''
       }`
   )}`;

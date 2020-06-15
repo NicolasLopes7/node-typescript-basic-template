@@ -12,7 +12,31 @@
       ],
       "params": [{ "name": "restaurantId", "type": "string" }],
       "queryParams": [{ "name": "sql", "type": "string" }],
-      "headers": [{ "name": "Authorization", "type": "string" }]
+      "headers": [{ "name": "Authorization", "type": "string" }],
+      "response": [
+        { "name": "id", "type": "number" },
+        { "name": "name", "type": "string" },
+        { "name": "cityId", "type": "number" }
+      ]
+    },
+    {
+      "name": "Get restaurant by order",
+      "version": "1.0",
+      "description": "This route returns informations from restaurant",
+      "method": "GET",
+      "endPoint": "/getItemsByOrder",
+      "body": [
+        { "name": "userId", "type": "number" },
+        { "name": "orderId", "type": "number" }
+      ],
+      "params": [{ "name": "restaurantId", "type": "string" }],
+      "queryParams": [{ "name": "sql", "type": "string" }],
+      "headers": [{ "name": "Authorization", "type": "string" }],
+      "response": [
+        { "name": "id", "type": "number" },
+        { "name": "name", "type": "string" },
+        { "name": "cityId", "type": "number" }
+      ]
     }
   ]
 }
