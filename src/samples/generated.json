@@ -1,0 +1,18 @@
+{
+  "endPoints": [
+    {
+      "name": "Get items by order",
+      "version": "1.0",
+      "description": "This route returns all the items in a order",
+      "method": "GET",
+      "endPoint": "/getItemsByOrder",
+      "body": [
+        { "name": "userId", "type": "number" },
+        { "name": "orderId", "type": "number" }
+      ],
+      "params": [{ "name": "restaurantId", "type": "string" }],
+      "queryParams": [{ "name": "sql", "type": "string" }],
+      "headers": [{ "name": "Authorization", "type": "string" }]
+    }
+  ]
+}
