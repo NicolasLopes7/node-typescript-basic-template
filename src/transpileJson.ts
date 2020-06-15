@@ -68,5 +68,3 @@ export const generateReadme = () => {
   const text = `${title}\n${subTitle}\n${endPoints}`;
   return text;
 };
-
-console.log(generateReadme());
